@@ -38,6 +38,9 @@ public class User {
     @Column(nullable = true, columnDefinition = "varchar(255) default 'https://i.pinimg.com/originals/c3/e1/0a/c3e10aeb8ecc1f529d592146eb599ddf.jpg'")
     private String profile_img;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Friend> friends;
+
     private boolean isEnabled;
 
     public User() {
