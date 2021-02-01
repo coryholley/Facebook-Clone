@@ -10,8 +10,23 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 25)
-    private String name;
+    @Column(nullable = false, length = 100)
+    private String street;
+
+    @Column(nullable = false, length = 100)
+    private String unit;
+
+    @Column(nullable = false, length = 50)
+    private String city;
+
+    @Column(nullable = false, length = 50)
+    private String state;
+
+    @Column(nullable = false, length = 50)
+    private String zip;
+
+    @Column(nullable = false, length = 100)
+    private String landmark;
 
     @ManyToMany(mappedBy = "userLocations")
     private List<User> users;
@@ -25,16 +40,26 @@ public class Location {
     public Location() {
     }
 
-    public Location(long id, String name, List<User> users, List<Group> groups, List<Event> events) {
+    public Location(long id, String street, String unit, String city, String state, String zip, String landmark, List<User> users, List<Group> groups, List<Event> events) {
         this.id = id;
-        this.name = name;
+        this.street = street;
+        this.unit = unit;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.landmark = landmark;
         this.users = users;
         this.groups = groups;
         this.events = events;
     }
 
-    public Location(String name, List<User> users, List<Group> groups, List<Event> events) {
-        this.name = name;
+    public Location(String street, String unit, String city, String state, String zip, String landmark, List<User> users, List<Group> groups, List<Event> events) {
+        this.street = street;
+        this.unit = unit;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.landmark = landmark;
         this.users = users;
         this.groups = groups;
         this.events = events;
@@ -46,14 +71,6 @@ public class Location {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<User> getUsers() {
@@ -78,5 +95,54 @@ public class Location {
 
     public void setEvents(List<Event> events) {
         this.events = events;
+    }
+
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getLandmark() {
+        return landmark;
+    }
+
+    public void setLandmark(String landmark) {
+        this.landmark = landmark;
     }
 }
