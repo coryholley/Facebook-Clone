@@ -191,4 +191,13 @@ public class User {
     )
     private List<Group> groups;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_events",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="event_id")}
+    )
+    private List<Event> events;
+
+
 }
