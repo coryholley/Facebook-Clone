@@ -18,6 +18,10 @@ public class Friend {
     @Column(nullable = true)
     private Boolean send_Email;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Friend() {
     }
 
@@ -71,5 +75,13 @@ public class Friend {
 
     public void setSend_Email(Boolean send_Email) {
         this.send_Email = send_Email;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

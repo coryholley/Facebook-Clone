@@ -1,6 +1,7 @@
 package com.codeup.facebookclone.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "status_updates")
@@ -14,6 +15,13 @@ public class Status_Update {
 
     @Column(nullable = false)
     private String update_image;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "status_update")
+    private List<Comment> comments;
 
     public Status_Update() {
     }
@@ -57,5 +65,21 @@ public class Status_Update {
 
     public void setUpdate_image(String update_image) {
         this.update_image = update_image;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
