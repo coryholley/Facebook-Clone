@@ -183,4 +183,12 @@ public class User {
         this.friends = friends;
     }
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_groups",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="group_id")}
+    )
+    private List<Group> groups;
+
 }
