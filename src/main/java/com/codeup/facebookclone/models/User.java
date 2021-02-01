@@ -41,6 +41,25 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Friend> friends;
 
+    public List<Friend> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<Friend> friends) {
+        this.friends = friends;
+    }
+
+    public List<Status_Update> getStatus_updates() {
+        return status_updates;
+    }
+
+    public void setStatus_updates(List<Status_Update> status_updates) {
+        this.status_updates = status_updates;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Status_Update> status_updates;
+
     private boolean isEnabled;
 
     public User() {
