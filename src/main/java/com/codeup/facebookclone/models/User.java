@@ -12,10 +12,10 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 100)
-    private String first_name;
+    private String firstName;
 
     @Column(nullable = false, length = 100)
-    private String last_name;
+    private String lastName;
 
     @Column(nullable = false, length = 100, unique = true)
     private String email;
@@ -26,8 +26,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "reset_password_token")
-    private String resetPasswordToken;
+//    @Column(name = "reset_password_token")
+//    private String resetPasswordToken;
 
     @Column(nullable = false)
     private boolean isAdmin;
@@ -36,57 +36,54 @@ public class User {
     private Date birthday;
 
     @Column(nullable = true, columnDefinition = "varchar(255) default 'https://i.pinimg.com/originals/c3/e1/0a/c3e10aeb8ecc1f529d592146eb599ddf.jpg'")
-    private String profile_img;
+    private String profileImg;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Friend> friends;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Status_Update> status_update;
 
     private boolean isEnabled;
 
     public User() {
     }
 
-    public User(long id, String first_name, String last_name, String email, String username, String password, String resetPasswordToken, boolean isAdmin, Date birthday, String profile_img, boolean isEnabled) {
+    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, Date birthday, String profileImg, boolean isEnabled) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.resetPasswordToken = resetPasswordToken;
+//        this.resetPasswordToken = resetPasswordToken;
         this.isAdmin = isAdmin;
         this.birthday = birthday;
-        this.profile_img = profile_img;
+        this.profileImg = profileImg;
         this.isEnabled = isEnabled;
     }
 
-    public User(String first_name, String last_name, String email, String username, String password, String resetPasswordToken, boolean isAdmin, Date birthday, String profile_img, boolean isEnabled) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, Date birthday, String profileImg, boolean isEnabled) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.resetPasswordToken = resetPasswordToken;
+//        this.resetPasswordToken = resetPasswordToken;
         this.isAdmin = isAdmin;
         this.birthday = birthday;
-        this.profile_img = profile_img;
+        this.profileImg = profileImg;
         this.isEnabled = isEnabled;
     }
 
     public User(User copy) {
         id = copy.id;
-        first_name = copy.first_name;
-        last_name = copy.last_name;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
         email = copy.email;
         username = copy.username;
         password = copy.password;
-        resetPasswordToken = copy.resetPasswordToken;
+//        resetPasswordToken = copy.resetPasswordToken;
         isAdmin = copy.isAdmin;
         birthday = copy.birthday;
-        profile_img = copy.profile_img;
+        profileImg = copy.profileImg;
         isEnabled = copy.isEnabled;
     }
 
@@ -98,20 +95,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -138,13 +135,13 @@ public class User {
         this.password = password;
     }
 
-    public String getResetPasswordToken() {
-        return resetPasswordToken;
-    }
-
-    public void setResetPasswordToken(String resetPasswordToken) {
-        this.resetPasswordToken = resetPasswordToken;
-    }
+//    public String getResetPasswordToken() {
+//        return resetPasswordToken;
+//    }
+//
+//    public void setResetPasswordToken(String resetPasswordToken) {
+//        this.resetPasswordToken = resetPasswordToken;
+//    }
 
     public boolean isAdmin() {
         return isAdmin;
@@ -162,12 +159,12 @@ public class User {
         this.birthday = birthday;
     }
 
-    public String getProfile_img() {
-        return profile_img;
+    public String getProfileImg() {
+        return profileImg;
     }
 
-    public void setProfile_img(String profile_img) {
-        this.profile_img = profile_img;
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
     }
 
     public boolean isEnabled() {
@@ -176,15 +173,6 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         isEnabled = enabled;
-    }
-
-
-    public List<Status_Update> getStatus_update() {
-        return status_update;
-    }
-
-    public void setStatus_update(List<Status_Update> status_update) {
-        this.status_update = status_update;
     }
 
     public List<Friend> getFriends() {

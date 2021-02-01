@@ -13,33 +13,29 @@ public class Comment {
     private String comment;
 
     @Column(nullable = true)
-    private Boolean send_Email;
+    private Boolean sendEmail;
 
     @ManyToOne
-    @JoinColumn(name = "status_update_id")
-    private Status_Update status_update;
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    @OneToOne
+    private User owner;
 
     public Comment() {
     }
 
-    public Comment(long id, String comment, Boolean send_Email, Status_Update status_update) {
+    public Comment(long id, String comment, Boolean sendEmail, Post post) {
         this.id = id;
         this.comment = comment;
-        this.send_Email = send_Email;
-        this.status_update = status_update;
+        this.sendEmail = sendEmail;
+        this.post = post;
     }
 
-    public Comment(String comment, Boolean send_Email, Status_Update status_update) {
+    public Comment(String comment, Boolean sendEmail, Post post) {
         this.comment = comment;
-        this.send_Email = send_Email;
-        this.status_update = status_update;
-    }
-
-    public Comment(Comment copy) {
-        id = copy.id;
-        comment = copy.comment;
-        send_Email = copy.send_Email;
-        status_update = copy.status_update;
+        this.sendEmail = sendEmail;
+        this.post = post;
     }
 
     public long getId() {
@@ -58,19 +54,27 @@ public class Comment {
         this.comment = comment;
     }
 
-    public Boolean getSend_Email() {
-        return send_Email;
+    public Boolean getSendEmail() {
+        return sendEmail;
     }
 
-    public void setSend_Email(Boolean send_Email) {
-        this.send_Email = send_Email;
+    public void setSendEmail(Boolean sendEmail) {
+        this.sendEmail = sendEmail;
     }
 
-    public Status_Update getStatus_update() {
-        return status_update;
+    public Post getPost() {
+        return post;
     }
 
-    public void setStatus_update(Status_Update status_update) {
-        this.status_update = status_update;
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
