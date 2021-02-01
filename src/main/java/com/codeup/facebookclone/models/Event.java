@@ -28,6 +28,14 @@ public class Event {
     @ManyToMany(mappedBy = "events")
     private List<User> users;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="events_locations",
+            joinColumns={@JoinColumn(name="event_id")},
+            inverseJoinColumns={@JoinColumn(name="location_id")}
+    )
+    private List<Location> eventLocations;
+
     public Event() {
     }
 

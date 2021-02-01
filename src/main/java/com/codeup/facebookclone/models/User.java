@@ -41,6 +41,30 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Friend> friends;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_groups",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="group_id")}
+    )
+    private List<Group> groups;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_events",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="event_id")}
+    )
+    private List<Event> events;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_locations",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="location_id")}
+    )
+    private List<Location> userLocations;
+
     private boolean isEnabled;
 
     public User() {
@@ -183,21 +207,29 @@ public class User {
         this.friends = friends;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name="users_groups",
-            joinColumns={@JoinColumn(name="user_id")},
-            inverseJoinColumns={@JoinColumn(name="group_id")}
-    )
-    private List<Group> groups;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name="users_events",
-            joinColumns={@JoinColumn(name="user_id")},
-            inverseJoinColumns={@JoinColumn(name="event_id")}
-    )
-    private List<Event> events;
+    public List<Group> getGroups() {
+        return groups;
+    }
 
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public List<Location> getUserLocations() {
+        return userLocations;
+    }
+
+    public void setUserLocations(List<Location> userLocations) {
+        this.userLocations = userLocations;
+    }
 
 }

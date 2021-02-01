@@ -28,6 +28,14 @@ public class Group {
     @ManyToMany(mappedBy = "groups")
     private List<User> users;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="groups_locations",
+            joinColumns={@JoinColumn(name="group_id")},
+            inverseJoinColumns={@JoinColumn(name="location_id")}
+    )
+    private List<Location> groupLocations;
+
     public Group() {
     }
 
@@ -104,5 +112,13 @@ public class Group {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<Location> getGroupLocations() {
+        return groupLocations;
+    }
+
+    public void setGroupLocations(List<Location> groupLocations) {
+        this.groupLocations = groupLocations;
     }
 }
