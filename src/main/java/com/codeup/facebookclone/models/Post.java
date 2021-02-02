@@ -30,6 +30,14 @@ public class Post {
     )
     private List<Location> locations;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="posts_categories",
+            joinColumns={@JoinColumn(name="ad_id")},
+            inverseJoinColumns={@JoinColumn(name="category_id")}
+    )
+    private List<Category> categories;
+
     public Post() {
     }
 
@@ -91,5 +99,13 @@ public class Post {
 
     public void setLocations(List<Location> locations) {
         this.locations = locations;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
