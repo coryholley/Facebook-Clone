@@ -37,11 +37,11 @@ public class UserController {
     @GetMapping("/sign-up")
     public String showSignupForm(Model model) {
         model.addAttribute("userToSignUp", new User());
-        if (!SecurityContextHolder.getContext().getAuthentication().getName().equalsIgnoreCase("anonymousUser")) {
-            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            User user_db = users.findById(user.getId());
-            model.addAttribute("user", user_db);
-        }
+//        if (!SecurityContextHolder.getContext().getAuthentication().getName().equalsIgnoreCase("anonymousUser")) {
+//            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//            User user_db = users.findById(user.getId());
+//            model.addAttribute("user", user_db);
+//        }
         return "sign-up";
     }
 
@@ -123,9 +123,6 @@ public class UserController {
         }
         return modelAndView;
     }
-
-
-
 
     @ModelAttribute("loggedinuser")
     public User globalUserObject(Model model) {
