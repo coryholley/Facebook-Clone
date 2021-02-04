@@ -4,6 +4,10 @@ body, html {
     background-color: #8f52a2;
 }
 
+a:link {
+    text-decoration: none;
+}
+
 .bg-image {
     /* The image used */
     background-image: url("../img/pexels-ann-h-6188056.jpg");
@@ -19,6 +23,25 @@ body, html {
     background-position: center;
     background-repeat: repeat;
     background-size: cover;
+}
+
+.indexButtons {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    border: black solid 3px;
+}
+
+#loginButton {
+    background-color: #67a9d1;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+#signupButton {
+    background-color: #00a558;
+    font-size: 2.5rem;
+    font-weight: bolder;
 }
 
 .signUpBox {

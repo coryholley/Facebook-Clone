@@ -2,11 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <div th:include="partials/head.html :: head"></div>
-    <title>Log In page</title>
+    <title>Welcome page</title>
 </head>
 <body>
 <div class="bg-image"></div>
-<div class="container-fluid min-vw-100 min-vh-100">
+<div sec:authorize="!isAuthenticated()" class="container-fluid w-100 h-100 pageContainer">
+    <div class="row h-100">
+        <div class="col-md-6 col-xs-12 m-auto d-flex justify-content-center">
+            <a th:href="@{/login}"><div id="loginButton" class="indexButtons">
+                <p class="h-100 d-flex justify-content-center align-items-center text-white">SIGN-IN</p>
+            </div></a>
+        </div>
+        <div class="col-md-6 col-xs-12 m-auto d-flex justify-content-center">
+            <a th:href="@{/sign-up}"><div id="signupButton" class="indexButtons">
+                <p class="h-100 d-flex justify-content-center align-items-center text-white">SIGN-UP</p>
+            </div></a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
     <div class="row">
         <div>
 
