@@ -1,7 +1,7 @@
 body, html {
     width: 100vw;
     height: 100vh;
-    background-color: dimgray;
+    background-color: #8f52a2;
 }
 
 .bg-image {
@@ -17,11 +17,11 @@ body, html {
 
     /* Center and scale the image nicely */
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
 }
 
-#signUpBox{
+#signUpBox {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
     font-weight: bold;
@@ -31,10 +31,18 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    width: 80%;
     padding: 20px;
     margin-top: 1rem;
-    max-height: 90%;
+    max-width: 60vw;
+}
+
+#pageContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    z-index: 2;
 }
 
 #pwRequirementsList {
