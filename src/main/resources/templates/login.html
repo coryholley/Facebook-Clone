@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:include="partials/head.html :: head"></div>
+    <title>Login page</title>
+</head>
+<body class="body">
+<div class="bg-image"></div>
+<div class="container-fluid" style="padding-top: 5%">
+    <div class="row justify-content-center">
+        <div class="card avatarBorderCont" style="width: 30rem; height: 25rem">
+            <article class="card-body forgotPasswordCard">
+                <span th:text="${message}"></span>
+                <h4 class="card-title text-center mb-4 mt-1 rockFont">Sign in</h4>
+                <hr>
+                <div th:if="${param.error}" class="text-center">
+                    <p class="text-danger">Invalid Username and Password.</p>
+                </div>
+                <div th:if="${param.logout}" class="text-center">
+                    <p class="text-success">You have successfully logged out.</p>
+                </div>
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input name="username" class="form-control" placeholder="Enter username" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
+                            <input class="form-control" placeholder="******" type="password" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </div>
+                    <p class="text-center"><a th:href="@{/forgotPassword}">Reset Password</a></p>
+                    <p class="text-center">Don't have an account? <a th:href="@{/sign-up}">Sign Up!</a></p>
+                </form>
+            </article>
+        </div>
+    </div>
+</div>
+</body>
+</html>

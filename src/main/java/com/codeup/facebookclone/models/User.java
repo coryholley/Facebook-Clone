@@ -26,8 +26,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-//    @Column(name = "reset_password_token")
-//    private String resetPasswordToken;
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 
     @Column(nullable = false)
     private boolean isAdmin;
@@ -70,28 +70,31 @@ public class User {
     public User() {
     }
 
-    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, Date birthday, String profileImg, boolean isEnabled) {
+    public <T> User(String name, List<T> asList) {
+    }
+
+    public User(long id, String firstName, String lastName, String email, String username, String password, String resetPasswordToken, boolean isAdmin, Date birthday, String profileImg, boolean isEnabled) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
-//        this.resetPasswordToken = resetPasswordToken;
+        this.resetPasswordToken = resetPasswordToken;
         this.isAdmin = isAdmin;
         this.birthday = birthday;
         this.profileImg = profileImg;
         this.isEnabled = isEnabled;
     }
 
-    public User(long id, String email, String username, String password, boolean isAdmin, boolean isEnabled) {
+    public User(long id, String email, String username, String password, boolean isAdmin, String resetPasswordToken, boolean isEnabled) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
         this.isEnabled = isEnabled;
-//        this.resetPasswordToken = resetPasswordToken;
+        this.resetPasswordToken = resetPasswordToken;
     }
 
     public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, Date birthday, String profileImg, boolean isEnabled) {
@@ -100,7 +103,7 @@ public class User {
         this.email = email;
         this.username = username;
         this.password = password;
-//        this.resetPasswordToken = resetPasswordToken;
+        this.resetPasswordToken = resetPasswordToken;
         this.isAdmin = isAdmin;
         this.birthday = birthday;
         this.profileImg = profileImg;
@@ -114,7 +117,7 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
-//        resetPasswordToken = copy.resetPasswordToken;
+        resetPasswordToken = copy.resetPasswordToken;
         isAdmin = copy.isAdmin;
         birthday = copy.birthday;
         profileImg = copy.profileImg;
@@ -169,13 +172,13 @@ public class User {
         this.password = password;
     }
 
-//    public String getResetPasswordToken() {
-//        return resetPasswordToken;
-//    }
-//
-//    public void setResetPasswordToken(String resetPasswordToken) {
-//        this.resetPasswordToken = resetPasswordToken;
-//    }
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
 
     public boolean isAdmin() {
         return isAdmin;
