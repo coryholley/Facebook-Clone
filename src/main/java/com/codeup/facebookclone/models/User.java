@@ -11,10 +11,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = true, length = 100)
     private String firstName;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = true, length = 100)
     private String lastName;
 
     @Column(nullable = false, length = 100, unique = true)
@@ -32,7 +32,7 @@ public class User {
     @Column(nullable = false)
     private boolean isAdmin;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Date birthday;
 
     @Column(nullable = true, columnDefinition = "varchar(255) default 'https://i.pinimg.com/originals/c3/e1/0a/c3e10aeb8ecc1f529d592146eb599ddf.jpg'")
@@ -82,6 +82,16 @@ public class User {
         this.birthday = birthday;
         this.profileImg = profileImg;
         this.isEnabled = isEnabled;
+    }
+
+    public User(long id, String email, String username, String password, boolean isAdmin, boolean isEnabled) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+        this.isEnabled = isEnabled;
+//        this.resetPasswordToken = resetPasswordToken;
     }
 
     public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, Date birthday, String profileImg, boolean isEnabled) {
